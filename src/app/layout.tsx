@@ -14,25 +14,26 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Diagnostic Center in Burari | Tejas Health — MRI, CT Scan, X-Ray, Pathology",
+  title: "Aarogya Diagnostic Centre | Best Diagnostic Center in Burari, Delhi",
   description:
-    "Tejas Health is a trusted NABL-accredited diagnostic centre in Burari, Delhi offering MRI scan, CT scan, X-Ray, ultrasound, pathology and more. Book your appointment today.",
+    "Aarogya Diagnostic Centre is a trusted diagnostic centre in Sant Nagar, Burari, Delhi offering MRI scan, CT scan, X-Ray, ultrasound, pathology and more. Book your appointment today.",
   keywords: [
+    "Aarogya Diagnostic Centre",
     "diagnostic center Burari Delhi",
     "MRI scan in Burari",
     "CT scan near me Burari",
     "pathology lab Burari",
     "X-Ray Burari Delhi",
     "ultrasound Burari Delhi",
-    "Tejas Health diagnostic",
+    "diagnostic centre Sant Nagar",
     "NABL lab North Delhi",
   ],
   openGraph: {
-    title: "Tejas Health — Diagnostic Centre in Burari, Delhi",
+    title: "Aarogya Diagnostic Centre — Diagnostic Centre in Burari, Delhi",
     description: "Trusted diagnostic services: MRI, CT Scan, X-Ray, Ultrasound, and Pathology in Burari, North Delhi.",
     type: "website",
     locale: "en_IN",
-    siteName: "Tejas Health",
+    siteName: "Aarogya Diagnostic Centre",
   },
 };
 

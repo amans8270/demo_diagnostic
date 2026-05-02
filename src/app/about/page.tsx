@@ -73,7 +73,7 @@ export default function AboutPage() {
               <motion.div variants={fadeUp(0.14)} className="space-y-5 text-[0.9375rem] text-neutral-500 leading-relaxed">
                 <p>What started as a small pathology laboratory in 2015 has grown into a full-service diagnostic centre equipped with advanced imaging technology and a team of experienced specialists.</p>
                 <p>Over the years, we have served more than 50,000 patients from Burari, Mukherjee Nagar, Jahangirpuri and surrounding areas of North Delhi — growing entirely on patient trust and referrals.</p>
-                <p>We achieved NABL accreditation in 2019, validating our commitment to quality. Today, Tejas Health offers over 25 diagnostic services — from advanced MRI and CT scanning to routine blood tests — all under one roof.</p>
+                <p>We achieved NABL accreditation in 2019, validating our commitment to quality. Today, Aarogya Diagnostic Centre offers over 25 diagnostic services — from advanced MRI and CT scanning to routine blood tests — all under one roof.</p>
               </motion.div>
               <motion.div variants={fadeUp(0.2)} className="mt-8">
                 <Link href="/appointment" className="btn-primary">Book Your Visit</Link>

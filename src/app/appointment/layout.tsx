@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Book Appointment | Tejas Health Diagnostic Centre, Burari Delhi",
+  title: "Book Appointment | Aarogya Diagnostic Centre, Burari Delhi",
   description:
-    "Schedule your diagnostic test appointment online at Tejas Health, Burari Delhi. Quick confirmation, no prepayment, easy rescheduling. MRI, CT Scan, X-Ray & more.",
+    "Schedule your diagnostic test appointment online at Aarogya Diagnostic Centre, Burari Delhi. Quick confirmation, no prepayment, easy rescheduling.",
 };
 
 export default function AppointmentLayout({ children }: { children: React.ReactNode }) {

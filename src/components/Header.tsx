@@ -20,10 +20,10 @@ export default function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/96 backdrop-blur-xl border-b border-neutral-100">
       {/* Announcement strip — compact on mobile, full on sm+ */}
       <div className="bg-sky-600 text-white text-center text-xs font-medium py-2.5 px-4 tracking-wide">
-        <span className="hidden sm:inline">📍 Open Mon–Sat: 7 AM–9 PM &nbsp;|&nbsp; Sun: 8 AM–2 PM &nbsp;|&nbsp; </span>
+        <span className="hidden sm:inline">📍 Open Mon–Sat: 8 AM–8 PM &nbsp;|&nbsp; Sunday: Closed &nbsp;|&nbsp; </span>
         <span className="sm:hidden">📍 Burari, Delhi &nbsp;|&nbsp; </span>
-        <a href="tel:+919876543210" className="underline underline-offset-2 hover:text-sky-100 transition-colors font-semibold">
-          Call +91 98765 43210
+        <a href="tel:+918287806712" className="underline underline-offset-2 hover:text-sky-100 transition-colors font-semibold">
+          Call +91 82878 06712
         </a>
       </div>
 
@@ -39,7 +39,7 @@ export default function Header() {
             </div>
             <div>
               <div className="text-[1.0625rem] font-800 text-neutral-900 leading-none tracking-tight" style={{ fontWeight: 800 }}>
-                Tejas Health
+                Aarogya Diagnostic Centre
               </div>
               <div className="text-[10px] text-neutral-400 tracking-[0.12em] uppercase mt-0.5 font-medium">
                 Diagnostic Centre
@@ -67,13 +67,13 @@ export default function Header() {
           {/* Right actions */}
           <div className="hidden lg:flex items-center gap-3">
             <a
-              href="tel:+919876543210"
+              href="tel:+918287806712"
               className="btn-ghost !py-2.5 !px-4 !text-sm !border-neutral-200"
             >
               <svg className="w-4 h-4 text-sky-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
               </svg>
-              +91 98765 43210
+              +91 82878 06712
             </a>
 
             <Link href="/appointment" className="btn-primary !py-2.5 !px-5 !text-sm">

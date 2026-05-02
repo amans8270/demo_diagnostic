@@ -41,7 +41,7 @@ export default function DashboardPage() {
             <div>
               <div className="section-label mb-2">Demo Dashboard</div>
               <h1 className="text-2xl font-extrabold text-neutral-900 tracking-tight">Appointment Overview</h1>
-              <p className="text-sm text-neutral-500 mt-0.5">Today&apos;s operations at Tejas Health Diagnostic Centre</p>
+              <p className="text-sm text-neutral-500 mt-0.5">Today&apos;s operations at Aarogya Diagnostic Centre</p>
             </div>
             <span className="inline-flex items-center gap-2 text-xs text-neutral-500 bg-neutral-50 border border-neutral-200 px-3 py-2 rounded-lg">
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
@@ -135,7 +135,7 @@ export default function DashboardPage() {
 
             <div className="flex items-center justify-between px-6 py-4 border-t border-neutral-100 bg-neutral-50/50">
               <span className="text-xs text-neutral-400">Showing {rows.length} of {appts.length} appointments</span>
-              <span className="text-xs text-neutral-300">Demo data · Tejas Health Dashboard</span>
+              <span className="text-xs text-neutral-300">Demo data · Aarogya Diagnostic Dashboard</span>
             </div>
           </div>
         </div>

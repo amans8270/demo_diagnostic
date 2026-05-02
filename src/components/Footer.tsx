@@ -13,7 +13,7 @@ export default function Footer() {
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 2v20M2 12h20"/></svg>
               </div>
               <div>
-                <div className="text-white font-bold text-base leading-none tracking-tight">Tejas Health</div>
+                <div className="text-white font-bold text-base leading-none tracking-tight">Aarogya Diagnostic Centre</div>
                 <div className="text-neutral-500 text-[10px] tracking-[0.12em] uppercase mt-1">Diagnostic Centre</div>
               </div>
             </Link>
@@ -69,21 +69,21 @@ export default function Footer() {
             <ul className="space-y-5">
               <li className="flex gap-3 items-start">
                 <svg className="w-4 h-4 text-sky-500 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                <span className="text-sm text-neutral-500 leading-relaxed">Shop No. 12, Main Burari Road,<br/>Near Burari Chowk, Delhi – 110084</span>
+                <span className="text-sm text-neutral-500 leading-relaxed">450- A, Main Rd, Block B, Sant Nagar,<br/>Burari, Delhi, 110084</span>
               </li>
               <li className="flex gap-3 items-center">
                 <svg className="w-4 h-4 text-sky-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-                <a href="tel:+919876543210" className="text-sm text-neutral-500 hover:text-white transition-colors">+91 98765 43210</a>
+                <a href="tel:+918287806712" className="text-sm text-neutral-500 hover:text-white transition-colors">+91 82878 06712</a>
               </li>
               <li className="flex gap-3 items-center">
                 <svg className="w-4 h-4 text-sky-500 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 4L12 13 2 4"/></svg>
-                <a href="mailto:info@tejashealth.in" className="text-sm text-neutral-500 hover:text-white transition-colors">info@tejashealth.in</a>
+                <a href="mailto:info@aarogyadiagnostic.in" className="text-sm text-neutral-500 hover:text-white transition-colors">info@aarogyadiagnostic.in</a>
               </li>
               <li className="flex gap-3 items-start">
                 <svg className="w-4 h-4 text-sky-500 mt-0.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                 <div className="text-sm text-neutral-500 leading-7">
-                  <span className="text-white font-medium">Mon–Sat:</span> 7:00 AM – 9:00 PM<br/>
-                  <span className="text-white font-medium">Sunday:</span> 8:00 AM – 2:00 PM
+                  <span className="text-white font-medium">Mon–Sat:</span> 8:00 AM – 8:00 PM<br/>
+                  <span className="text-white font-medium">Sunday:</span> Closed
                 </div>
               </li>
             </ul>
@@ -95,7 +95,7 @@ export default function Footer() {
       {/* Bottom bar */}
       <div className="border-t border-white/[0.06]">
         <div className="container-xl py-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-neutral-600">© {new Date().getFullYear()} Tejas Health Diagnostic Centre. All rights reserved.</p>
+          <p className="text-xs text-neutral-600">© {new Date().getFullYear()} Aarogya Diagnostic Centre. All rights reserved.</p>
           <div className="flex gap-6">
             <a href="#" className="text-xs text-neutral-600 hover:text-neutral-400 transition-colors">Privacy Policy</a>
             <a href="#" className="text-xs text-neutral-600 hover:text-neutral-400 transition-colors">Terms of Service</a>

@@ -124,7 +124,7 @@ export default function ServicesPage() {
             <p className="section-sub mx-auto text-center mb-8">Our team will guide you based on your symptoms or doctor&apos;s prescription. Call us or book a consultation.</p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link href="/appointment" className="btn-primary">Book Appointment</Link>
-              <a href="tel:+919876543210" className="btn-ghost">Call: +91 98765 43210</a>
+              <a href="tel:+918287806712" className="btn-ghost">Call: +91 82878 06712</a>
             </div>
           </motion.div>
         </div>
