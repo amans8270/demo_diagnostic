@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About Aarogya Diagnostic Centre | Trusted Diagnostic Centre in Burari, Delhi",
+  title: "About Demo Clinic Dental Studio | Trusted Dentist in Burari, Delhi",
   description:
-    "Learn about Aarogya Diagnostic Centre — facility in Burari, Delhi with years of experience serving patients with accurate diagnostic services.",
+    "Learn about Demo Clinic Dental Studio — our experienced dental team in Burari, Delhi offering cosmetic, implant, and emergency dental care.",
 };
 
 export default function AboutLayout({ children }: { children: React.ReactNode }) {

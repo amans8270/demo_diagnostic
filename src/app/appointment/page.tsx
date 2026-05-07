@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import Link from "next/link";
 
 const fadeUp = (d = 0): Variants => ({
   hidden: { opacity: 0, y: 20 },
@@ -8,58 +9,81 @@ const fadeUp = (d = 0): Variants => ({
 });
 const stagger: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.09 } } };
 
-const tests = ["MRI Scan","CT Scan","Digital X-Ray","Ultrasound","Blood Test / Pathology","ECG","EEG","Mammography","Health Check-Up Package","Other"];
-const slots = ["7:00 – 8:00 AM","8:00 – 9:00 AM","9:00 – 10:00 AM","10:00 – 11:00 AM","11:00 AM – 12:00 PM","12:00 – 1:00 PM","2:00 – 3:00 PM","3:00 – 4:00 PM","4:00 – 5:00 PM","5:00 – 6:00 PM","6:00 – 7:00 PM","7:00 – 8:00 PM"];
+const services = ["Cosmetic Consultation", "Dental Implant", "Invisalign", "Emergency Care", "Same-day Crown", "Oral Surgery", "Routine Check-up", "Other"];
+const slots = ["9:00 – 10:00 AM", "10:00 – 11:00 AM", "11:00 AM – 12:00 PM", "12:00 – 1:00 PM", "2:00 – 3:00 PM", "3:00 – 4:00 PM", "4:00 – 5:00 PM", "5:00 – 6:00 PM"];
 
-type FormState = { name: string; phone: string; email: string; age: string; gender: string; test: string; date: string; time: string; prescription: boolean; notes: string; };
-const empty: FormState = { name:"",phone:"",email:"",age:"",gender:"",test:"",date:"",time:"",prescription:false,notes:"" };
+type FormState = { name: string; phone: string; email: string; age: string; gender: string; test: string; date: string; time: string; prescription: boolean; notes: string };
+const empty: FormState = { name: "", phone: "", email: "", age: "", gender: "", test: "", date: "", time: "", prescription: false, notes: "" };
 
 export default function AppointmentPage() {
   const [form, setForm] = useState<FormState>(empty);
   const [done, setDone] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const t = e.target as HTMLInputElement;
-    setForm(p => ({ ...p, [t.name]: t.type === "checkbox" ? t.checked : t.value }));
+    setForm((p) => ({ ...p, [t.name]: t.type === "checkbox" ? t.checked : t.value }));
   };
 
-  const tomorrow = new Date(); tomorrow.setDate(tomorrow.getDate() + 1);
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
   const minDate = tomorrow.toISOString().split("T")[0];
 
   return (
     <>
       {/* Hero */}
-      <section className="relative bg-neutral-950 overflow-hidden py-20 sm:py-28">
-        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 60% at 80% 0%, rgb(14 165 233 / 0.1), transparent 70%)" }} />
-        <div className="container-xl relative">
+      <section className="page-hero">
+        <div className="container-xl relative z-10 py-14">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <motion.div initial="hidden" animate="visible" variants={stagger}>
               <motion.div variants={fadeUp(0)}>
-                <div className="section-label mb-5" style={{ color: "#38bdf8" }}>Book Appointment</div>
+                <div className="section-label on-dark mb-5">Schedule Consultation</div>
               </motion.div>
-              <motion.h1 variants={fadeUp(0.08)} className="section-heading mb-5" style={{ fontSize: "clamp(2rem, 5vw, 3rem)", color: "#ffffff" }}>
-                Schedule Your<br/><span className="text-gradient">Diagnostic Visit</span>
+              <motion.h1 variants={fadeUp(0.08)} className="display-heading mb-5" style={{ fontSize: "clamp(2rem, 5vw, 3.25rem)" }}>
+                Book Your <em>Dental Consultation</em>
               </motion.h1>
-              <motion.p variants={fadeUp(0.16)} className="section-sub mb-10" style={{ color: "#94a3b8" }}>
-                Book online in under 2 minutes. We confirm via phone within 30 minutes. No prepayment required.
+              <motion.p variants={fadeUp(0.16)} className="section-sub mb-8" style={{ color: "#94A3B8" }}>
+                Fill out the form and we'll confirm your slot within 30 minutes. No prepayment required.
               </motion.p>
-              <motion.div variants={fadeUp(0.22)} className="flex flex-col gap-4">
-                {[["01","Fill the form","Enter your details and preferred test & time"],["02","We confirm","Receive a confirmation call within 30 minutes"],["03","Visit us","Come in at your chosen date and time slot"]].map(([n,t,d]) => (
+
+              <motion.div variants={fadeUp(0.22)} className="space-y-3">
+                {[
+                  { n: "01", t: "Fill the Form", d: "Enter your details and preferred service & time" },
+                  { n: "02", t: "We Confirm", d: "Receive a call within 30 minutes to confirm your slot" },
+                  { n: "03", t: "Visit Us", d: "Come in at your chosen time — zero prepayment needed" },
+                ].map(({ n, t, d }) => (
                   <div key={n} className="flex items-center gap-4">
-                    <div className="w-10 h-10 rounded-xl flex items-center justify-center text-sky-400 text-xs font-bold shrink-0" style={{ background: "rgba(56,189,248,0.1)", border: "1px solid rgba(56,189,248,0.2)" }}>{n}</div>
-                    <div><p className="text-sm font-semibold text-white">{t}</p><p className="text-xs text-neutral-500">{d}</p></div>
+                    <div className="step-number shrink-0">{n}</div>
+                    <div>
+                      <p className="text-sm font-bold text-white">{t}</p>
+                      <p className="text-xs" style={{ color: "#64748B" }}>{d}</p>
+                    </div>
                   </div>
                 ))}
               </motion.div>
             </motion.div>
 
-            <motion.div initial={{ opacity: 0, x: 24 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] as any }} className="hidden lg:flex flex-col gap-4">
-              {[["📋 No Prepayment Required","Pay at the centre on the day of your visit — cash or card accepted."],["🔄 Easy Rescheduling","Call us anytime to change or cancel your appointment slot."],["⚡ Urgent Cases Welcome","Same-day slots are available for urgent diagnostic needs."]].map(([title, desc]) => (
-                <div key={title as string} className="flex gap-4 p-5 rounded-2xl border" style={{ background: "rgba(255,255,255,0.04)", borderColor: "rgba(255,255,255,0.07)" }}>
-                  <div className="text-xl shrink-0">{(title as string).split(" ")[0]}</div>
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.2, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
+              className="hidden lg:grid grid-cols-1 gap-4"
+            >
+              {[
+                { icon: "📋", title: "No Prepayment Required", desc: "Pay at the centre on the day of your visit — cash or card accepted." },
+                { icon: "🔄", title: "Easy Rescheduling", desc: "Call us anytime to change or cancel your appointment without any hassle." },
+                { icon: "⚡", title: "Urgent Cases Welcome", desc: "Same-day emergency slots available for urgent dental needs." },
+                { icon: "💰", title: "0% Finance Options", desc: "Flexible payment plans available for all major treatments." },
+              ].map(({ icon, title, desc }) => (
+                <div
+                  key={title}
+                  className="flex gap-4 p-4 rounded-xl"
+                  style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}
+                >
+                  <div className="text-2xl shrink-0">{icon}</div>
                   <div>
-                    <p className="text-sm font-semibold text-white mb-0.5">{(title as string).replace(/^\S+\s/, "")}</p>
-                    <p className="text-xs text-neutral-500">{desc as string}</p>
+                    <p className="text-sm font-bold text-white mb-0.5">{title}</p>
+                    <p className="text-xs" style={{ color: "#64748B" }}>{desc}</p>
                   </div>
                 </div>
               ))}
@@ -69,41 +93,83 @@ export default function AppointmentPage() {
       </section>
 
       {/* Form */}
-      <section className="section bg-neutral-50">
+      <section className="section" style={{ background: "#F8FAFC" }}>
         <div className="container-xl">
           <div className="max-w-3xl mx-auto">
             <AnimatePresence mode="wait">
               {done ? (
-                <motion.div key="success" initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0 }} transition={{ duration: 0.4 }}
-                  className="text-center py-20 px-8 rounded-3xl bg-white border border-neutral-100 shadow-xl shadow-black/[0.04]">
-                  <div className="w-20 h-20 mx-auto mb-6 rounded-full bg-green-50 border border-green-100 flex items-center justify-center">
-                    <svg className="w-9 h-9 text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+                <motion.div
+                  key="success"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className="text-center py-20 px-8 rounded-3xl bg-white"
+                  style={{ border: "1px solid #E2E8F0", boxShadow: "0 16px 48px rgba(0,0,0,0.08)" }}
+                >
+                  <div
+                    className="w-20 h-20 mx-auto mb-6 rounded-full flex items-center justify-center"
+                    style={{ background: "#D1FAE5", border: "1px solid #6EE7B7" }}
+                  >
+                    <svg className="w-9 h-9" style={{ color: "#059669" }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
                   </div>
-                  <h2 className="text-3xl font-extrabold text-neutral-900 tracking-tight mb-3">Appointment Requested!</h2>
-                  <p className="text-neutral-500 max-w-sm mx-auto mb-2 leading-relaxed">
-                    Thank you, <span className="font-semibold text-neutral-800">{form.name}</span>. Your request for <span className="font-semibold text-neutral-800">{form.test}</span> on <span className="font-semibold text-neutral-800">{form.date}</span> has been submitted.
+                  <h2 className="text-3xl font-extrabold tracking-tight mb-3" style={{ color: "#0F172A", fontFamily: "'Playfair Display', serif" }}>
+                    Appointment Requested!
+                  </h2>
+                  <p className="mb-2 leading-relaxed" style={{ color: "#64748B", maxWidth: "28rem", margin: "0 auto 0.5rem" }}>
+                    Thank you, <strong style={{ color: "#1E293B" }}>{form.name}</strong>. Your request for <strong style={{ color: "#1E293B" }}>{form.test}</strong> on <strong style={{ color: "#1E293B" }}>{form.date}</strong> has been submitted.
                   </p>
-                  <p className="text-neutral-400 text-sm mb-10">We will call <span className="font-medium text-neutral-600">{form.phone}</span> to confirm within 30 minutes.</p>
-                  <button onClick={() => { setDone(false); setForm(empty); }} className="btn-primary !px-8">Book Another Appointment</button>
+                  <p className="text-sm mb-10" style={{ color: "#94A3B8" }}>We'll call <strong style={{ color: "#475569" }}>{form.phone}</strong> within 30 minutes to confirm.</p>
+                  <button
+                    onClick={() => { setDone(false); setForm(empty); }}
+                    className="btn-primary !px-8"
+                  >
+                    Book Another Appointment
+                  </button>
                 </motion.div>
               ) : (
                 <motion.div key="form" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
-                  <div className="rounded-3xl bg-white border border-neutral-100 shadow-xl shadow-black/[0.04] overflow-hidden">
+                  <div className="rounded-3xl bg-white overflow-hidden" style={{ border: "1px solid #E2E8F0", boxShadow: "0 16px 48px rgba(0,0,0,0.08)" }}>
                     {/* Card header */}
-                    <div className="px-8 sm:px-10 pt-10 pb-7 border-b border-neutral-100">
-                      <h2 className="text-xl font-bold text-neutral-900 tracking-tight mb-2">Appointment Details</h2>
-                      <p className="text-sm text-neutral-400">All fields marked * are required. We confirm via phone call.</p>
+                    <div
+                      className="px-8 sm:px-10 pt-8 pb-6"
+                      style={{ borderBottom: "1px solid #F1F5F9", background: "linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%)" }}
+                    >
+                      <h2 className="text-xl font-bold tracking-tight mb-1" style={{ color: "#0F172A", fontFamily: "'Playfair Display', serif" }}>
+                        Appointment Details
+                      </h2>
+                      <p className="text-sm" style={{ color: "#64748B" }}>All fields marked * are required. We confirm via phone call.</p>
                     </div>
 
-                    <form onSubmit={e => { e.preventDefault(); setDone(true); }} className="px-8 sm:px-10 py-10 space-y-10">
-
-                      {/* Patient Info */}
-                      <div className="bg-neutral-50/50 p-6 sm:p-8 rounded-2xl border border-neutral-100">
-                        <p className="text-xs font-bold text-sky-600 uppercase tracking-widest mb-6 flex items-center gap-2">
-                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                    <form
+                      onSubmit={async (e) => {
+                        e.preventDefault();
+                        setLoading(true);
+                        try {
+                          const res = await fetch("/api/appointments", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: JSON.stringify({ name: form.name, phone: form.phone, email: form.email, service: form.test, date: form.date, time: form.time }),
+                          });
+                          const json = await res.json();
+                          if (res.ok && json.success) { setDone(true); }
+                          else { alert(json.message || "Failed to submit appointment"); }
+                        } catch { alert("Network error — please try again"); }
+                        finally { setLoading(false); }
+                      }}
+                      className="px-8 sm:px-10 py-10 space-y-8"
+                    >
+                      {/* Section: Patient Info */}
+                      <div className="p-6 rounded-2xl" style={{ background: "#F8FAFC", border: "1px solid #E2E8F0" }}>
+                        <p className="text-xs font-bold tracking-widest uppercase mb-6 flex items-center gap-2" style={{ color: "#0D9488" }}>
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                          </svg>
                           Patient Information
                         </p>
-                        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
+                        <div className="grid sm:grid-cols-2 gap-5">
                           <div>
                             <label className="label" htmlFor="a-name">Full Name *</label>
                             <input id="a-name" name="name" type="text" required value={form.name} onChange={onChange} placeholder="Patient's full name" className="input" />
@@ -116,7 +182,7 @@ export default function AppointmentPage() {
                             <label className="label" htmlFor="a-email">Email Address</label>
                             <input id="a-email" name="email" type="email" value={form.email} onChange={onChange} placeholder="you@example.com" className="input" />
                           </div>
-                          <div className="grid grid-cols-2 gap-4 sm:gap-6">
+                          <div className="grid grid-cols-2 gap-4">
                             <div>
                               <label className="label" htmlFor="a-age">Age *</label>
                               <input id="a-age" name="age" type="number" min="1" max="120" required value={form.age} onChange={onChange} placeholder="Age" className="input" />
@@ -132,20 +198,20 @@ export default function AppointmentPage() {
                         </div>
                       </div>
 
-                      <div className="h-px bg-neutral-100 hidden" />
-
-                      {/* Test & Schedule */}
-                      <div className="bg-neutral-50/50 p-6 sm:p-8 rounded-2xl border border-neutral-100">
-                        <p className="text-xs font-bold text-sky-600 uppercase tracking-widest mb-6 flex items-center gap-2">
-                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                          Test &amp; Schedule
+                      {/* Section: Schedule */}
+                      <div className="p-6 rounded-2xl" style={{ background: "#F8FAFC", border: "1px solid #E2E8F0" }}>
+                        <p className="text-xs font-bold tracking-widest uppercase mb-6 flex items-center gap-2" style={{ color: "#0D9488" }}>
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                          </svg>
+                          Service & Schedule
                         </p>
-                        <div className="grid sm:grid-cols-2 gap-6 sm:gap-8">
+                        <div className="grid sm:grid-cols-2 gap-5">
                           <div className="sm:col-span-2">
-                            <label className="label" htmlFor="a-test">Test / Service *</label>
+                            <label className="label" htmlFor="a-test">Service Required *</label>
                             <select id="a-test" name="test" required value={form.test} onChange={onChange} className="input">
                               <option value="">Select a service</option>
-                              {tests.map(t => <option key={t}>{t}</option>)}
+                              {services.map((t) => <option key={t}>{t}</option>)}
                             </select>
                           </div>
                           <div>
@@ -156,41 +222,45 @@ export default function AppointmentPage() {
                             <label className="label" htmlFor="a-time">Preferred Time *</label>
                             <select id="a-time" name="time" required value={form.time} onChange={onChange} className="input">
                               <option value="">Select a slot</option>
-                              {slots.map(s => <option key={s}>{s}</option>)}
+                              {slots.map((s) => <option key={s}>{s}</option>)}
                             </select>
                           </div>
                         </div>
                       </div>
 
-                      <div className="h-px bg-neutral-100 hidden" />
-
-                      {/* Additional */}
-                      <div className="bg-neutral-50/50 p-6 sm:p-8 rounded-2xl border border-neutral-100">
-                        <p className="text-xs font-bold text-sky-600 uppercase tracking-widest mb-6 flex items-center gap-2">
-                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                      {/* Section: Additional */}
+                      <div className="p-6 rounded-2xl" style={{ background: "#F8FAFC", border: "1px solid #E2E8F0" }}>
+                        <p className="text-xs font-bold tracking-widest uppercase mb-5 flex items-center gap-2" style={{ color: "#0D9488" }}>
+                          <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/>
+                          </svg>
                           Additional Details
                         </p>
-                        <div className="space-y-6 sm:space-y-8">
-                          <label className="flex items-start gap-4 cursor-pointer group p-4 rounded-xl border border-neutral-200 bg-white hover:border-sky-300 transition-colors">
-                            <input name="prescription" type="checkbox" checked={form.prescription} onChange={onChange} className="mt-1 w-5 h-5 rounded border-neutral-300 text-sky-600 cursor-pointer" />
-                            <span className="text-[0.9375rem] font-medium text-neutral-700 group-hover:text-neutral-900 transition-colors leading-relaxed">
-                              I have a doctor&apos;s prescription / referral for this test
+                        <div className="space-y-5">
+                          <label className="flex items-start gap-4 cursor-pointer group p-4 rounded-xl" style={{ border: "1px solid #E2E8F0", background: "white" }}>
+                            <input name="prescription" type="checkbox" checked={form.prescription} onChange={onChange} className="mt-1 w-5 h-5 cursor-pointer" />
+                            <span className="text-sm font-medium leading-relaxed" style={{ color: "#475569" }}>
+                              I have a doctor&apos;s prescription / referral for this treatment
                             </span>
                           </label>
                           <div>
-                            <label className="label" htmlFor="a-notes">Notes <span className="text-neutral-400 font-normal">(optional)</span></label>
-                            <textarea id="a-notes" name="notes" rows={4} value={form.notes} onChange={onChange}
-                              placeholder="Any medical conditions, special requirements, or questions…"
-                              className="input resize-none" />
+                            <label className="label" htmlFor="a-notes">Notes <span className="font-normal" style={{ color: "#94A3B8" }}>(optional)</span></label>
+                            <textarea id="a-notes" name="notes" rows={3} value={form.notes} onChange={onChange} placeholder="Any medical conditions, allergies, or special requirements…" className="input resize-none" />
                           </div>
                         </div>
                       </div>
 
-                      <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                        <motion.button type="submit" whileTap={{ scale: 0.985 }} className="btn-primary !px-10 w-full sm:w-auto justify-center">
-                          Submit Appointment Request
+                      <div className="flex flex-col sm:flex-row gap-4">
+                        <motion.button
+                          type="submit"
+                          whileTap={{ scale: 0.985 }}
+                          disabled={loading}
+                          className="btn-primary !px-10 w-full sm:w-auto justify-center"
+                          style={{ opacity: loading ? 0.7 : 1 }}
+                        >
+                          {loading ? "Submitting…" : "Submit Appointment Request →"}
                         </motion.button>
-                        <p className="text-xs text-neutral-400 self-center leading-relaxed">
+                        <p className="text-xs self-center leading-relaxed" style={{ color: "#94A3B8" }}>
                           By submitting you consent to us contacting you about this appointment.
                         </p>
                       </div>

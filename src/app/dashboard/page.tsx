@@ -11,14 +11,14 @@ const fadeUp: Variants = {
 };
 
 const appts = [
-  { id: "TH-001", patient: "Rakesh Verma",    test: "MRI Brain",         date: "02 May 2025", time: "9:00 AM",  status: "Confirmed" },
-  { id: "TH-002", patient: "Sunita Devi",     test: "CT Chest (HRCT)",   date: "02 May 2025", time: "10:00 AM", status: "Confirmed" },
-  { id: "TH-003", patient: "Amit Singh",      test: "Blood Test – CBC",  date: "02 May 2025", time: "7:30 AM",  status: "Completed" },
-  { id: "TH-004", patient: "Neha Gupta",      test: "Ultrasound Abdomen",date: "02 May 2025", time: "11:00 AM", status: "Pending" },
-  { id: "TH-005", patient: "Mohammad Irfan",  test: "X-Ray Chest",       date: "02 May 2025", time: "8:00 AM",  status: "Completed" },
-  { id: "TH-006", patient: "Kavita Rani",     test: "Thyroid Profile",   date: "02 May 2025", time: "7:00 AM",  status: "Completed" },
-  { id: "TH-007", patient: "Suresh Yadav",    test: "ECG",               date: "03 May 2025", time: "9:30 AM",  status: "Pending" },
-  { id: "TH-008", patient: "Pooja Sharma",    test: "Mammography",       date: "03 May 2025", time: "10:30 AM", status: "Confirmed" },
+  { id: "DC-101", patient: "Rakesh Verma",    test: "Dental Implant",         date: "07 May 2026", time: "9:00 AM",  status: "Confirmed" },
+  { id: "DC-102", patient: "Sunita Devi",     test: "Veneer Consultation",    date: "07 May 2026", time: "10:00 AM", status: "Confirmed" },
+  { id: "DC-103", patient: "Amit Singh",      test: "Root Canal",             date: "07 May 2026", time: "11:30 AM",  status: "Completed" },
+  { id: "DC-104", patient: "Neha Gupta",      test: "Same-day Crown",         date: "08 May 2026", time: "11:00 AM", status: "Pending" },
+  { id: "DC-105", patient: "Mohammad Irfan",  test: "Emergency Extraction",   date: "08 May 2026", time: "8:00 AM",  status: "Completed" },
+  { id: "DC-106", patient: "Kavita Rani",     test: "Invisalign Review",      date: "09 May 2026", time: "2:00 PM",  status: "Completed" },
+  { id: "DC-107", patient: "Suresh Yadav",    test: "Oral Surgery Consult",   date: "09 May 2026", time: "3:30 PM",  status: "Pending" },
+  { id: "DC-108", patient: "Pooja Sharma",    test: "Teeth Whitening",        date: "10 May 2026", time: "10:30 AM", status: "Confirmed" },
 ];
 
 const statusStyle: Record<string, string> = {
@@ -39,9 +39,9 @@ export default function DashboardPage() {
         <div className="container-xl">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <div className="section-label mb-2">Demo Dashboard</div>
+              <div className="section-label mb-2">Clinic Dashboard</div>
               <h1 className="text-2xl font-extrabold text-neutral-900 tracking-tight">Appointment Overview</h1>
-              <p className="text-sm text-neutral-500 mt-0.5">Today&apos;s operations at Aarogya Diagnostic Centre</p>
+              <p className="text-sm text-neutral-500 mt-0.5">Today&apos;s appointments at Demo Clinic Dental Studio</p>
             </div>
             <span className="inline-flex items-center gap-2 text-xs text-neutral-500 bg-neutral-50 border border-neutral-200 px-3 py-2 rounded-lg">
               <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>

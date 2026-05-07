@@ -3,7 +3,7 @@
 export default function WhatsAppButton() {
   return (
     <a
-      href="https://wa.me/918287806712?text=Hi%20Aarogya%20Diagnostic%20Centre%2C%20I%20would%20like%20to%20book%20an%20appointment."
+      href="https://wa.me/918287806712?text=Hi%20Demo%20Clinic%20Dental%20Studio%2C%20I%20would%20like%20to%20book%20a%20consultation.%20I%20have%20a%20dental%20photo%20to%20share."
       target="_blank"
       rel="noopener noreferrer"
       className="whatsapp-float"

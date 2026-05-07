@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Contact Aarogya Diagnostic Centre | Diagnostic Centre in Burari, Delhi",
+  title: "Contact Demo Clinic Dental Studio | Best Dentist in Burari, Delhi",
   description:
-    "Get in touch with Aarogya Diagnostic Centre in Burari. Call +91 82878 06712, email info@aarogyadiagnostic.in, or visit us at Sant Nagar, Delhi 110084.",
+    "Contact Demo Clinic Dental Studio — call +91 82878 06712 or email hello@democlinicdental.in to schedule a consultation or emergency dental care.",
 };
 
 export default function ContactLayout({ children }: { children: React.ReactNode }) {

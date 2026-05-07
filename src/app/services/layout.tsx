@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Diagnostic Services | MRI, CT Scan, X-Ray, Pathology — Aarogya Diagnostic Burari",
+  title: "Dental Services | Cosmetic, Implants, Invisalign — Demo Clinic Dental Studio",
   description:
-    "Explore our full range of diagnostic services: MRI Scan, CT Scan, X-Ray, Ultrasound, Pathology, ECG, Mammography & Health Packages at Aarogya Diagnostic Centre, Burari Delhi.",
+    "Explore dental services at Demo Clinic Dental Studio: Cosmetic Dentistry, Dental Implants, Invisalign, Emergency Dental Care, Same-day Crowns, and more.",
 };
 
 export default function ServicesLayout({ children }: { children: React.ReactNode }) {

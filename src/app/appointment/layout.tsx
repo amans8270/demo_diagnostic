@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Book Appointment | Aarogya Diagnostic Centre, Burari Delhi",
+  title: "Schedule Appointment | Demo Clinic Dental Studio — Book Dentist Visit",
   description:
-    "Schedule your diagnostic test appointment online at Aarogya Diagnostic Centre, Burari Delhi. Quick confirmation, no prepayment, easy rescheduling.",
+    "Book your dental consultation or treatment at Demo Clinic Dental Studio. Fast confirmations, multiple service options, and emergency slots available.",
 };
 
 export default function AppointmentLayout({ children }: { children: React.ReactNode }) {
